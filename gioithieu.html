@@ -45,7 +45,7 @@
 			<div id="wm-primary-dimmer" class="ui page dimmer"> <div class="content"> <div class="ui text loader">Loading</div> </div> </div>
 <div class="pusher">
 	<div class="ui padded grid" ><div class=" wm-mobile column" ><div id='top-bar' class="ui grid  wm-mobile container" ><div id='logo-menu' class="large computer only three wide large four wide computer column center aligned" ><style>.wm-module.wm-image .image-85:before{z-index: 2; background: rgba(0, 0, 0, 0.51);}.wm-module.wm-image .image-85{cursor: pointer;</style>
-<div class="wm-module wm-image" onclick="location.href='https://organicfood.weba.vn/'">
+<div class="wm-module wm-image" onclick="location.href=">
 	<div class="image-85"  >
 					<style>
 				.text_avatar{
@@ -69,13 +69,13 @@
 			">
 			<button type="button" class="ui button" onclick="
                 var keyword = $(this).closest('div').find('.txtKeyword').val();
-                location.href = 'https://organicfood.weba.vn/search/' + keyword;
+               
             ">Tìm</button>
 		</div>
 		<!-- </form> -->
 	</div>
 </div>		<nav class="wm-module wm-menu ui inverted blue default medium menu menu-main center-menu computer tablet only wm-men-10">
-			<a class="item" href="http://127.0.0.1:5500/Cuoi%20khoa/index.html"><i class="icon home"></i>Trang chủ</a><a class="item" href="http://127.0.0.1:5500/Cuoi%20khoa/gioithieu.html">Giới thiệu</a><a class="item" href="http://127.0.0.1:5500/Cuoi%20khoa/lienhe.html">Liên hệ</a><a class="item" href="/carts/"><i class="icon add to cart"></i>Giỏ hàng</a><div class="menu right"></div>		</nav>
+			<a class="item" href="http://127.0.0.1:5500/Cuoi%20khoa/index.html"><i class="icon home"></i>Trang chủ</a><a class="item" href="http://127.0.0.1:5500/Cuoi%20khoa/gioithieu.html">Giới thiệu</a><a class="item" href="http://127.0.0.1:5500/Cuoi%20khoa/lienhe.html">Liên hệ</a><a class="item" href="http://127.0.0.1:5500/Cuoi%20khoa/giohang.html"><i class="icon add to cart"></i>Giỏ hàng</a><div class="menu right"></div>		</nav>
 		</div><div id='danhmuc-menu' class="large computer only three wide large three wide computer column center aligned" >		<nav class="wm-module wm-menu ui default  menu computer tablet mobile only wm-men-817">
 			<div class="ui simple dropdown autooff item" ><a href="">Danh mục sản phẩm</a><i class="dropdown icon" ></i><div class="menu" ><a class="item" href="http://127.0.0.1:5500/Cuoi%20khoa/rau.html">Rau</a><a class="item wm active" href="http://127.0.0.1:5500/Cuoi%20khoa/hoaqua.html">Hoa quả</a><a class="item" href="http://127.0.0.1:5500/Cuoi%20khoa/gao.html">Gạo</a>	</nav>
 		</div></div></div></div><div class="ui padded grid" ><div class="menu-for-mobile  wm-mobile column" ><div id='menu-for-mobile' class="ui grid  wm-mobile container" ><div id='logo-mobile' class="tablet mobile only six wide tablet sixteen wide mobile column" ><style>.wm-module.wm-image .image-71:before{z-index: 2; background: rgba(0, 0, 0, 0.51);}.wm-module.wm-image .image-71{cursor: auto;</style>
@@ -103,7 +103,7 @@
 			">
 			<button type="button" class="ui button" onclick="
                 var keyword = $(this).closest('div').find('.txtKeyword').val();
-                location.href = 'https://organicfood.weba.vn/search/' + keyword;
+                location.href = '' + keyword;
             ">Tìm</button>
 		</div>
 		<!-- </form> -->
@@ -293,58 +293,7 @@
         <div class="close-icon unsee element">x</div>
     </div>
         </div>
-<script>
-    $(window).ready(function(){
-        var i = 1;
-        var n = $('.ser-icon .process .item').length;
-        var len = $('.ser-icon .process').width()/n;
-        var pos = new WebKitCSSMatrix($('.ser-icon .process').css('transform'));
-        //console.log('len: '+len+' pos: '+pos.m41);
-        $('.ser-icon').removeClass('unsee');
-        function nextFrame() {
-            if(i < n) {
-                i++;
-                var pos2=new WebKitCSSMatrix($('.ser-icon .process').css('transform'));
-                $('.ser-icon .process').css('transform','translateX('+(pos2.m41-len)+'px)');
-                // Continue the loop in 1s
-                setTimeout(nextFrame, 800);
-            }
-            else{
-                $('.ser-icon').addClass('unsee');
-                i=1;
-                $('.ser-icon .process').css('transform','translateX('+(pos.m41)+'px)');
-                setTimeout(beginFrame, 2000);
-            }
-        }
-        // Start the loop
-        $(".form-callback .close i").click(function(event) {
-            $(".form-callback").slideUp('400');
-        });
-        $(".form-callback .content input").keydown(function(e) {
-            /* Act on the event */
-            var code = e.keyCode || e.which;
-            if(($(this).val().length > 10 || !(code>=48 && code <=57)) && $.inArray(code, [8,37,38,39,40,46])==-1) event.preventDefault();
-        });
-        $(".form-callback .content button").click(function(event) {
-            if($(this).siblings('input').val().length < 10) {alert("Vui lòng điền số điện thoại hợp lệ!"); return;}
-            $(this).parents(".form-callback").find(".close i").trigger('click');
-            $.post('/ajx/ajx.php', {act: 'CALLING_BACK',phone: $(this).siblings('input').val()}, function(data, textStatus, xhr) {
-                //console.log(data);
-                alert("Gửi yêu cầu thành công!");
-            });
-        });
-        function beginFrame(){
-            $('.ser-icon').removeClass('unsee');
-            setTimeout(nextFrame, 900);
-        }
-        setTimeout(beginFrame, 2000);
-        $('.close-icon').click(function(event) {
-            /* Act on the event */
-            $('.element').toggleClass('unsee');
-        });
-        $('.main-widget').removeClass('hide');
-    });
-</script>
+
 <script src="https://organicfood.weba.vn/public/plugins/Semantic-UI/semantic.min.js"></script>
 <script src="https://organicfood.weba.vn/public/js/app/app.min.js"></script>
 <script type="text/javascript" src="/public/plugins/mmenu/dist/js/jquery.mmenu.all.min.js"></script><script type="text/javascript" src="/public/js/modules/images/image.js"></script><script type="text/javascript" src="/public/js/modules/menu/menu.js"></script><script type="text/javascript" src="/themes/default/2458/app.js"></script>
